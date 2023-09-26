@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam-Art Downloader</title>
+    <style>
+        /* Your dark mode CSS styles go here */
+        body {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Steam-Art Downloader</h1>
+    <div id="art-container"></div>
+    <button id="download-button">Open Photos</button>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/HttpAnimation/Steam-Art-Downloader/gh-pages/Art.sat');
+                const data = await response.text();
+
+                // Split the data by lines
+                const lines = data.split('\n');
+                const artContainer = document.getElementById('art-container');
+
+                lines.forEach(line => {
+                    // Ignore lines starting with '#'
+                    if (!line.startsWith('#')) {
+                        const parts = line.split(' ');
+                        const name = parts[0];
+                        const gridUrl = parts[1];
+                        const heroUrl = parts[2];
+                        const iconUrl = parts[3];
+                        const logoUrl = parts[4];
+
+                        // Create elements for each entry
+                        const entryDiv = document.createElement('div');
+                        entryDiv.innerHTML = `
+                            <h2>${name}</h2>
+                            <img src="${gridUrl}" alt="Grid">
+                            <img src="${heroUrl}" alt="Hero">
+                            <img src="${iconUrl}" alt="Icon">
+                            <img src="${logoUrl}" alt="Logo">
+                        `;
+
+                        artContainer.appendChild(entryDiv);
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function openPhotosInNewTab() {
+            const images = document.querySelectorAll('#art-container img');
+            images.forEach(img => {
+                window.open(img.src, '_blank');
+            });
+        }
+
+        document.getElementById('download-button').addEventListener('click', openPhotosInNewTab);
+
+        // Fetch data when the page loads
+        fetchData();
+    </script>
+</body>
+</html>
