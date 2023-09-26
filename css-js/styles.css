@@ -1,0 +1,126 @@
+/* General styles */
+body {
+color: black;
+background-image: url('Photos/With%20Credit%20Protogen.png');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+}
+
+/* Sidebar styles */
+.sidebar {
+width: 30%;
+height: 100%;
+background-color: #222;
+position: fixed;
+left: 0;
+top: 0;
+overflow-y: auto;
+padding-top: 20px;
+transition: all 0.5s ease;
+}
+
+.sidebar .button {
+background-color: transparent;
+border: none;
+color: #f1f1f1;
+text-align: left;
+font-size: 16px;
+font-weight: bold;
+font-family: 'Ubuntu', sans-serif;
+cursor: pointer;
+width: 100%;
+height: 50px;
+margin-bottom: 5px;
+transition: transform 0.2s, background-color 0.2s;
+}
+
+.sidebar .button:hover {
+background-color: rgba(255, 255, 255, 0.1);
+transform: scale(1.1);
+}
+
+.sidebar .button-home {
+background-color: #3B8BEA;
+color: #fff;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.sidebar .button-home:hover {
+background-color: #2B6BAE;
+}
+
+/* Content styles */
+.content {
+margin-left: 30%;
+padding: 20px;
+box-sizing: border-box;
+position: relative;
+width: 70%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+color: #000;
+font-weight: bold;
+}
+
+h1 {
+font-size: 2rem;
+margin-top: 50px;
+margin-bottom: 20px;
+}
+
+/* Button styles */
+.button {
+transition: transform 0.2s, background-color 0.2s;
+}
+
+.button:hover {
+transform: scale(1.1);
+}
+
+/* Loading bar styles */
+#loading-bar {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background-color: #ddd;
+z-index: 9999;
+}
+
+#loading-progress {
+height: 100%;
+background-color: #1d4888;
+width: 0%;
+transition: width 1s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 567px) {
+.content,
+.sidebar {
+width: 100%;
+margin-left: 0;
+left: 0;
+}
+
+.content {
+padding: 10px;
+}
+
+.sidebar {
+width: 70%;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+}
+
+@media (max-width: 523px) {
+body {
+background-size: contain;
+background-position: center;
+}
+}
